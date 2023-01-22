@@ -1,0 +1,38 @@
+package ch.zli.walkandcount;
+
+import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link testHomeFragement#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class testHomeFragement extends Fragment {
+
+    public testHomeFragement() {
+        // Required empty public constructor
+    }
+
+    public static testHomeFragement newInstance() {
+        testHomeFragement fragment = new testHomeFragement();
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_test_home_fragement, container, false);
+    }
+}

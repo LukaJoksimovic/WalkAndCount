@@ -2,27 +2,43 @@ package ch.zli.walkandcount;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
+
 public class homePageActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_home_page);
 
-        /*
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setDisplayShowCustomEnabled(true);
-        getSupportActionBar().setCustomView(R.layout.custom_action_bar_layout);
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        bottomNav.setOnNavigationItemSelectedListener(navListener);
+        bottomNav.setSelectedItemId(R.id.item_1);
 
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setDisplayShowCustomEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);getSupportActionBar().setCustomView(R.layout.custom_action_bar_layout);
-         */
+        getSupportActionBar().hide();
 
-
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new testHomeFragement()).commit();
 
     }
+
+    private final BottomNavigationView.OnNavigationItemSelectedListener navListener = item -> {
+        int itemId = item.getItemId();
+        if (itemId == R.id.item_1) {
+            // Do nothing
+        } else if (itemId == R.id.item_2) {
+            Intent i = new Intent(homePageActivity.this, showCurrentLocationActivity.class);
+            startActivity(i);
+        }
+        return true;
+    };
+
 }

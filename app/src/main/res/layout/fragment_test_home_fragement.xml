@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".testHomeFragement"
+    android:background="@color/black"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="top"
+        >
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            app:strokeWidth="0dp">
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="25dp"
+                android:gravity="top"
+                >
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Weshalb ist laufen gesund?"
+                    android:textColor="@color/light_purple"
+                    android:textStyle="bold"
+                    android:textSize="38px"
+                    android:layout_marginBottom="10dp"
+                    />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text=" • Verringert Bluthochdruck" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text=" • Verringert Herzinfarktrisiko" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text=" • Stress mindernd" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" • Gesünder aussehen" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            app:strokeWidth="0dp">
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="25dp"
+                android:gravity="top"
+                >
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Walk&amp;Count PREMIUM Edition"
+                    android:textColor="@color/light_purple"
+                    android:textStyle="bold"
+                    android:textSize="38px"
+                    android:layout_marginBottom="10dp"
+                    />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="Die Vorteile von Walk&amp;Count Premium geniessen:" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+
+                    >
+
+                    <Button
+                        android:id="@+id/moreInfos"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="Mehr Infos"
+                        android:textColor="@color/white"
+                        app:backgroundTint="@android:color/transparent"
+                        app:rippleColor="#33AAAAAA"
+                        app:strokeColor="@color/white"
+                        app:strokeWidth="1dp"
+                        android:layout_marginRight="5dp"
+                        />
+
+                    <Button
+                        android:id="@+id/buyPremium"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="Kaufen"
+                        android:textColor="@color/dark_green"
+                        android:backgroundTint="@color/light_green"
+                        android:layout_marginLeft="5dp"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+</FrameLayout>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".homePageActivity"
+    tools:context=".showCurrentLocationActivity"
     android:background="@color/black"
     >
 
@@ -25,11 +25,13 @@
             android:textColor="@color/white"
             />
 
-        <FrameLayout
-            android:id="@+id/fragment_container"
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:map="http://schemas.android.com/apk/res-auto"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:id="@+id/map"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@id/bottom_navigation" />
+            android:layout_marginTop="20dp"
+            android:layout_height="450dp"/>
 
     </LinearLayout>
 
@@ -62,6 +64,5 @@
             />
 
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
