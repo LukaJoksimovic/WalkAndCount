@@ -6,20 +6,100 @@
     android:layout_height="match_parent"
     tools:context=".CountStepAndLocationPageActivity">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="20dp"
+        android:gravity="top"
         >
 
         <TextView
-            android:id="@+id/stepCount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="test"
+            android:text="Walk&amp;Count"
             android:textColor="@color/white"
-            android:gravity="center"
             />
 
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:map="http://schemas.android.com/apk/res-auto"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_height="450dp"/>
+
     </LinearLayout>
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="bottom"
+        style="@style/Theme.Material3.Dark"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginRight="15dp"
+                >
+
+                <TextView
+                    android:id="@+id/titleStep"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Schritte: "
+                    android:textColor="@color/white"
+                    />
+
+                <TextView
+                    android:id="@+id/stepCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="test"
+                    android:textColor="@color/white"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginLeft="15dp"
+                >
+
+                <Button
+                    android:id="@+id/endAct"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/light_red"
+                    android:backgroundTint="@color/dark_red"
+                    android:layout_marginLeft="5dp"
+                    android:text="Beenden"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
