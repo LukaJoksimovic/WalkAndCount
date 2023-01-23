@@ -71,15 +71,12 @@ public class showCurrentLocationActivity extends AppCompatActivity implements On
         lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
         lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, this);
 
-        /*
-        // TODO: Umbauen, damit nicht letze bekannte stelle genommen wrid, sondern, die jetzige stelle des Benutzers
-        // Looks like it is working now with the Network provider, but it will probably only work if it is connnected to mobile Daten
         location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         if (location != null){
             longitude = (double) location.getLongitude();
             latitude = (double) location.getLatitude();
         }
-        */
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
@@ -102,16 +99,15 @@ public class showCurrentLocationActivity extends AppCompatActivity implements On
         mapTest = googleMap;
         mapTest.addMarker(new MarkerOptions()
                 .position(new LatLng(latitude, longitude))
-                .title("Marker"));
+                .title("Ihre Position"));
         LatLng latLng = new LatLng(latitude, longitude);
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 20);
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 19);
         mapTest.animateCamera(cameraUpdate);
         mapTest.addCircle(new CircleOptions()
                 .center(latLng)
                 .radius(20)
-                .strokeColor(Color.BLACK)
-                .fillColor(0x30ff0000)
-                .strokeWidth(2)
+                .fillColor(0x303d85c6)
+                .strokeColor(0x303d85c6)
         );
     }
 
@@ -124,16 +120,15 @@ public class showCurrentLocationActivity extends AppCompatActivity implements On
         mapTest.clear();
         mapTest.addMarker(new MarkerOptions()
                 .position(new LatLng(latitude, longitude))
-                .title("Marker"));
+                .title("Ihre Position"));
         LatLng latLng = new LatLng(latitude, longitude);
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 20);
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 19);
         mapTest.animateCamera(cameraUpdate);
         mapTest.addCircle(new CircleOptions()
                 .center(latLng)
                 .radius(20)
-                .strokeColor(Color.BLACK)
-                .fillColor(0x30ff0000)
-                .strokeWidth(2)
+                .fillColor(0x303d85c6)
+                .strokeColor(0x303d85c6)
         );
 
     }
