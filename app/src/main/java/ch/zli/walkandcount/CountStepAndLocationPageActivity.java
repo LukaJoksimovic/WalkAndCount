@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.hardware.Sensor;
@@ -52,7 +53,7 @@ public class CountStepAndLocationPageActivity extends AppCompatActivity implemen
     boolean firstTimeLoading = true;
     boolean running = false;
 
-    List<position> positions = new ArrayList<>();
+    List<LatLng> positions = new ArrayList<>();
 
     GoogleMap mapTest;
     LocationManager lm;
@@ -71,12 +72,20 @@ public class CountStepAndLocationPageActivity extends AppCompatActivity implemen
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACTIVITY_RECOGNITION}, PERMISSION_REQUEST_CODE);
         }
 
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
+        SharedPreferences.Editor editor = pref.edit();
+
         endActivity = (Button) findViewById(R.id.endAct);
 
         endActivity.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
                 Intent intent = new Intent(CountStepAndLocationPageActivity.this, resultsActivity.class);
                 intent.putExtra("totalStepCount", String.valueOf(totalStepsMade));
+
+                listHolder ListHolder = listHolder.getInstance();
+                ListHolder.fillList(positions);
+
                 // Parameter übergeben, totale Schritte, geloffene Distanz und eventuell Zeit?
                 startActivity(intent);
             }
@@ -97,6 +106,12 @@ public class CountStepAndLocationPageActivity extends AppCompatActivity implemen
 
         lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
         lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, this);
+
+        location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        if (location != null){
+            longitude = (double) location.getLongitude();
+            latitude = (double) location.getLatitude();
+        }
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -149,27 +164,17 @@ public class CountStepAndLocationPageActivity extends AppCompatActivity implemen
         mapTest = googleMap;
         mapTest.addMarker(new MarkerOptions()
                 .position(new LatLng(latitude, longitude))
-                .title("Marker"));
+                .title("Ihre Position"));
         LatLng latLng = new LatLng(latitude, longitude);
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 20);
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 19);
         mapTest.animateCamera(cameraUpdate);
         mapTest.addCircle(new CircleOptions()
                 .center(latLng)
                 .radius(20)
-                .strokeColor(Color.BLACK)
-                .fillColor(0x30ff0000)
-                .strokeWidth(2)
+                .fillColor(0x303d85c6)
+                .strokeColor(0x303d85c6)
         );
 
-        mapTest.addPolyline(new PolylineOptions()
-                .clickable(true)
-                .add(
-                        new LatLng(-35.016, 143.321),
-                        new LatLng(-34.747, 145.592),
-                        new LatLng(-34.364, 147.891),
-                        new LatLng(-33.501, 150.217),
-                        new LatLng(-32.306, 149.248),
-                        new LatLng(-32.491, 147.309)));
     }
 
     @Override
@@ -178,21 +183,25 @@ public class CountStepAndLocationPageActivity extends AppCompatActivity implemen
         longitude = location.getLongitude();
         latitude = location.getLatitude();
 
-        //Toast.makeText(showCurrentLocationActivity.this, "latitude:" + latitude + " longitude:" + longitude, Toast.LENGTH_SHORT).show();
+        positions.add(new LatLng(latitude, longitude));
+
         mapTest.clear();
         mapTest.addMarker(new MarkerOptions()
                 .position(new LatLng(latitude, longitude))
-                .title("Marker"));
+                .title("Ihre Position"));
         LatLng latLng = new LatLng(latitude, longitude);
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 20);
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 19);
         mapTest.animateCamera(cameraUpdate);
         mapTest.addCircle(new CircleOptions()
                 .center(latLng)
                 .radius(20)
-                .strokeColor(Color.BLACK)
-                .fillColor(0x30ff0000)
-                .strokeWidth(2)
+                .fillColor(0x303d85c6)
+                .strokeColor(0x303d85c6)
         );
+
+        mapTest.addPolyline(new PolylineOptions()
+                        .addAll(positions)
+                        .color(0xFF3d85c6));
 
     }
 
@@ -207,6 +216,5 @@ public class CountStepAndLocationPageActivity extends AppCompatActivity implemen
     @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {
     }
-
 
 }
