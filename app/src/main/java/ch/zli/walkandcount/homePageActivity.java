@@ -8,12 +8,15 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class homePageActivity extends AppCompatActivity {
 
+    Button startTracking;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +26,15 @@ public class homePageActivity extends AppCompatActivity {
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
         bottomNav.setSelectedItemId(R.id.item_1);
+
+        startTracking = (Button) findViewById(R.id.startTrackingAct);
+
+        startTracking.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(homePageActivity.this, CountStepAndLocationPageActivity.class);
+                startActivity(intent);
+            }
+        });
 
         getSupportActionBar().hide();
 
